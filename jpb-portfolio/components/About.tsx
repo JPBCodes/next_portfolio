@@ -1,8 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-type Props = {};
+import { PageInfo } from '../typings';
+import { urlFor } from '../sanity';
+type Props = {
+  pageInfo: PageInfo;
+};
 
-export default function About({}: Props) {
+export default function About({ pageInfo }: Props) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -28,7 +32,7 @@ export default function About({}: Props) {
         viewport={{
           once: true,
         }}
-        src="https://scontent-lax3-1.xx.fbcdn.net/v/t1.6435-9/96759356_104538561272421_352698548229242880_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=XwMJZ1jdXJwAX9fB6uw&tn=cZWvERfZR-QEGIki&_nc_ht=scontent-lax3-1.xx&oh=00_AfBGA7eNR28_hYlFTQys5NXR4--pIDpixMroN7qud4Vo7g&oe=63E38817"
+        src={urlFor(pageInfo?.heroImage).url()}
         className="-mb-20 md:mb-0 flex-shrink-0 w-56 h-56 rounded-full object-cover 
         md:rounded-lg md:w-64 md:h-95 xl:w-[900px] xl:h-[600px]"
       />
@@ -40,15 +44,7 @@ export default function About({}: Props) {
           </span>{' '}
           background
         </h4>
-        <p className="text-base">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+        <p className="text-base">{pageInfo?.backgroundInformation}</p>
       </div>
     </motion.div>
   );
